@@ -49,3 +49,55 @@
   background: #ffc66b;
   box-shadow: 0 0 16px 6px rgba(255, 198, 107, 0.6);
 }
+
+/* Parallaxe latérale : au défilement, les silhouettes du premier plan
+   glissent plus que la table du fond, comme un léger travelling. */
+@keyframes near {
+  from {
+    translate: -4cqw 0;
+  }
+  to {
+    translate: 4cqw 0;
+  }
+}
+
+@keyframes mid {
+  from {
+    translate: -2.5cqw 0;
+  }
+  to {
+    translate: 2.5cqw 0;
+  }
+}
+
+@keyframes far {
+  from {
+    translate: -1cqw 0;
+  }
+  to {
+    translate: 1cqw 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .scene {
+      container-type: inline-size;
+      view-timeline: --scene;
+    }
+    .person1,
+    .person2,
+    .table,
+    .candle,
+    .flame {
+      animation: far linear both;
+      animation-timeline: --scene;
+    }
+    .person1 {
+      animation-name: near;
+    }
+    .person2 {
+      animation-name: mid;
+    }
+  }
+}

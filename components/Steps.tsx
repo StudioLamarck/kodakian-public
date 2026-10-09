@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { FrameStrip } from "./Phone";
 import styles from "./Steps.module.css";
 
@@ -98,18 +99,18 @@ export default function Steps() {
   return (
     <section id="comment" className={styles.section}>
       <div className={styles.head}>
-        <div className={styles.headTitle}>
+        <div className={`reveal ${styles.headTitle}`}>
           <span className="eyebrow">Comment ça marche</span>
           <h2 className="h2">Trois étapes, zéro aperçu.</h2>
         </div>
-        <p className={`lead ${styles.headText}`}>
+        <p className={`lead reveal ${styles.headText}`}>
           Pas besoin d’acheter dix appareils jetables ni de courir chez le développeur. Tout se passe dans
           l’app.
         </p>
       </div>
       <ol className={styles.cards}>
-        {steps.map((s) => (
-          <li key={s.n} className={styles.card}>
+        {steps.map((s, i) => (
+          <li key={s.n} className={`reveal ${styles.card}`} style={{ "--i": i } as CSSProperties}>
             <div aria-hidden="true" className={styles.art}>
               {s.art}
             </div>

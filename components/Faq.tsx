@@ -32,7 +32,7 @@ export default function Faq() {
 
   return (
     <section id="faq" className={styles.section}>
-      <div className={styles.head}>
+      <div className={`reveal ${styles.head}`}>
         <span className="eyebrow">Questions</span>
         <h2 className="h2">Tu te demandes peut-être…</h2>
         <p className="lead">
@@ -51,7 +51,7 @@ export default function Faq() {
         {faqs.map((f, i) => {
           const isOpen = i === open;
           return (
-            <div key={f.q} className={styles.item}>
+            <div key={f.q} className={`reveal ${styles.item}`}>
               <h3 className={styles.heading}>
                 <button
                   type="button"

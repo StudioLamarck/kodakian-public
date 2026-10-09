@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import styles from "./Stats.module.css";
 
 const stats = [
@@ -11,8 +12,8 @@ export default function Stats() {
     <section aria-label="En chiffres" className={styles.section}>
       <div aria-hidden="true" className={styles.perfs} />
       <ul className={styles.list}>
-        {stats.map((s) => (
-          <li key={s.text} className={styles.item}>
+        {stats.map((s, i) => (
+          <li key={s.text} className={`reveal ${styles.item}`} style={{ "--i": i } as CSSProperties}>
             <span className={styles.value}>
               {s.value}
               {s.unit && <span className={styles.unit}>{s.unit}</span>}

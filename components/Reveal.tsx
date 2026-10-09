@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Countdown from "./Countdown";
 import styles from "./Reveal.module.css";
 
@@ -9,7 +10,7 @@ const points = [
 
 export default function Reveal() {
   return (
-    <section id="revelation" className={styles.section}>
+    <section id="revelation" className={`reveal-scale ${styles.section}`}>
       <div className={styles.copy}>
         <span className={`eyebrow ${styles.eyebrow}`}>La révélation</span>
         <h2 className={`h2 ${styles.title}`}>Le suspense fait partie du souvenir.</h2>
@@ -18,8 +19,8 @@ export default function Reveal() {
           jusqu’à l’heure de la révélation, puis l’album s’ouvre pour tout le monde au même moment.
         </p>
         <ul className={styles.points}>
-          {points.map((p) => (
-            <li key={p.long}>
+          {points.map((p, i) => (
+            <li key={p.long} className="reveal" style={{ "--i": i } as CSSProperties}>
               <span aria-hidden="true" className={styles.check}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12.5l4.5 4.5L19 7.5" />
@@ -49,7 +50,9 @@ export default function Reveal() {
         <Countdown />
         <div aria-hidden="true" className={styles.negatives}>
           {Array.from({ length: 10 }, (_, i) => (
-            <span key={i}>{String(i + 1).padStart(2, "0")}</span>
+            <span key={i} style={{ "--i": i } as CSSProperties}>
+              {String(i + 1).padStart(2, "0")}
+            </span>
           ))}
         </div>
         <div className={styles.lock}>

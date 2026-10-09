@@ -85,3 +85,30 @@
     display: inline;
   }
 }
+
+/* Barre de progression de lecture, en haut de l'écran. */
+.progress {
+  display: none;
+}
+
+@keyframes progress {
+  from {
+    scale: 0 1;
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .progress {
+    display: block;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--orange);
+    transform-origin: 0 50%;
+    animation: progress linear both;
+    animation-timeline: scroll(root);
+  }
+}
