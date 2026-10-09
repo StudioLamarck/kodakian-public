@@ -247,24 +247,17 @@
   }
 }
 
-/* ---------- Animations au scroll ---------- */
-@keyframes develop {
-  from {
-    opacity: 0.15;
-    background: #4a2a1c;
-  }
-}
-
+/* ---------- Apparition ---------- */
+/* Les négatifs se « développent » un par un quand ils entrent à l'écran. */
 @media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    .negatives {
-      view-timeline: --negatives;
-    }
-    /* Les négatifs se « développent » un par un en entrant dans l'écran. */
-    .negatives span {
-      animation: develop ease-out both;
-      animation-timeline: --negatives;
-      animation-range: cover calc(10% + var(--i) * 4%) cover calc(22% + var(--i) * 4%);
-    }
+  :global(.reveal-ready) .negatives span {
+    transition:
+      opacity 600ms ease-out,
+      background-color 600ms ease-out;
+    transition-delay: calc(300ms + var(--i) * 120ms);
+  }
+  :global(.reveal-ready) .negatives:not([data-shown]) span {
+    opacity: 0.15;
+    background-color: #4a2a1c;
   }
 }

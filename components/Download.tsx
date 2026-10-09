@@ -9,7 +9,7 @@ export default function Download() {
       <div className={`reveal-scale ${styles.card}`}>
         <span aria-hidden="true" className={`${styles.perfs} ${styles.top}`} />
         <span aria-hidden="true" className={`${styles.perfs} ${styles.bottom}`} />
-        <div className={styles.iconWrap}>
+        <div data-reveal className={styles.iconWrap}>
           <AppIcon size={220} className={styles.icon} />
         </div>
         <div className={styles.copy}>
