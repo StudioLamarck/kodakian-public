@@ -48,7 +48,7 @@ export default function Reveal() {
           </span>
         </div>
         <Countdown />
-        <div aria-hidden="true" className={styles.negatives}>
+        <div aria-hidden="true" data-reveal className={styles.negatives}>
           {Array.from({ length: 10 }, (_, i) => (
             <span key={i} style={{ "--i": i } as CSSProperties}>
               {String(i + 1).padStart(2, "0")}

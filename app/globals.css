@@ -136,38 +136,29 @@ p {
   }
 }
 
-/* ---------- Animations au scroll ----------
-   Pilotées par le défilement (scroll-driven animations), sans JavaScript.
-   Sans prise en charge du navigateur ou avec « réduire les animations »,
-   tout reste affiché normalement. `--i` décale l'apparition des éléments
-   d'une même rangée. */
-@keyframes reveal-up {
-  from {
-    opacity: 0;
-    translate: 0 56px;
+/* ---------- Apparitions au scroll ----------
+   RevealObserver ajoute `reveal-ready` sur <html> une fois la page
+   hydratée, puis `data-shown` sur chaque élément qui entre à l'écran.
+   Sans JavaScript ou avec « réduire les animations », tout reste affiché.
+   `--i` décale l'apparition des éléments d'une même rangée. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-ready .reveal,
+  .reveal-ready .reveal-scale {
+    transition:
+      opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      translate 900ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      scale 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 110ms);
   }
-}
 
-@keyframes reveal-scale {
-  from {
+  .reveal-ready .reveal:not([data-shown]) {
+    opacity: 0;
+    translate: 0 48px;
+  }
+
+  .reveal-ready .reveal-scale:not([data-shown]) {
     opacity: 0;
     scale: 0.94;
     translate: 0 40px;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    .reveal,
-    .reveal-scale {
-      animation: reveal-up cubic-bezier(0.2, 0.7, 0.2, 1) both;
-      animation-timeline: view();
-      animation-range: entry calc(var(--i, 0) * 12%) entry calc(80% + var(--i, 0) * 12%);
-    }
-
-    .reveal-scale {
-      animation-name: reveal-scale;
-      animation-range: entry 0% entry 55%;
-    }
   }
 }

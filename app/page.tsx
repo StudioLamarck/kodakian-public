@@ -8,6 +8,7 @@ import Occasions from "@/components/Occasions";
 import Faq from "@/components/Faq";
 import Download from "@/components/Download";
 import Footer from "@/components/Footer";
+import RevealObserver from "@/components/RevealObserver";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
         <Download />
       </main>
       <Footer />
+      <RevealObserver />
     </>
   );
 }
