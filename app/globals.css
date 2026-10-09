@@ -135,3 +135,39 @@ p {
     display: inline;
   }
 }
+
+/* ---------- Animations au scroll ----------
+   Pilotées par le défilement (scroll-driven animations), sans JavaScript.
+   Sans prise en charge du navigateur ou avec « réduire les animations »,
+   tout reste affiché normalement. `--i` décale l'apparition des éléments
+   d'une même rangée. */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    translate: 0 56px;
+  }
+}
+
+@keyframes reveal-scale {
+  from {
+    opacity: 0;
+    scale: 0.94;
+    translate: 0 40px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal,
+    .reveal-scale {
+      animation: reveal-up cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--i, 0) * 12%) entry calc(80% + var(--i, 0) * 12%);
+    }
+
+    .reveal-scale {
+      animation-name: reveal-scale;
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}

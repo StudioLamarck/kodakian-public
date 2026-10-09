@@ -6,7 +6,7 @@ import styles from "./Download.module.css";
 export default function Download() {
   return (
     <section id="telecharger" className={styles.section}>
-      <div className={styles.card}>
+      <div className={`reveal-scale ${styles.card}`}>
         <span aria-hidden="true" className={`${styles.perfs} ${styles.top}`} />
         <span aria-hidden="true" className={`${styles.perfs} ${styles.bottom}`} />
         <div className={styles.iconWrap}>

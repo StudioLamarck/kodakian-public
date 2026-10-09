@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Scene, { palettes } from "./Scene";
 import styles from "./Occasions.module.css";
 
@@ -30,13 +31,13 @@ const occasions = [
 export default function Occasions() {
   return (
     <section className={styles.section}>
-      <div className={styles.head}>
+      <div className={`reveal ${styles.head}`}>
         <span className="eyebrow">Pour quelles occasions</span>
         <h2 className="h2">Tous les moments où on sort les téléphones.</h2>
       </div>
       <div className={styles.grid}>
         {occasions.map((o, i) => (
-          <article key={o.title} className={styles.item}>
+          <article key={o.title} className={`reveal ${styles.item}`} style={{ "--i": i } as CSSProperties}>
             <Scene palette={o.palette} className={styles.photo}>
               <span aria-hidden="true" className={styles.num}>
                 N° {String(i + 1).padStart(2, "0")}

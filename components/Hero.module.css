@@ -87,7 +87,7 @@
   top: 280px;
   width: 3000px;
   height: 24px;
-  background: repeating-linear-gradient(90deg, var(--ink) 0 12px, transparent 12px 24px);
+  background: repeating-linear-gradient(90deg, var(--ink) 0 12px, transparent 12px 24px) 0 0 / 24px 100%;
   opacity: 0.9;
   transform: rotate(-8deg);
   transform-origin: 0 50%;
@@ -152,7 +152,7 @@
     left: 3px;
     top: 377px;
     height: 34px;
-    background: repeating-linear-gradient(90deg, var(--ink) 0 14px, transparent 14px 28px);
+    background: repeating-linear-gradient(90deg, var(--ink) 0 14px, transparent 14px 28px) 0 0 / 28px 100%;
   }
 
   .cameraPhone,
@@ -203,5 +203,150 @@
   .stage {
     width: auto;
     margin: 0;
+  }
+}
+
+/* ---------- Animations ----------
+   Entrée au chargement (opacity, scale), puis parallaxe au défilement
+   (translate, rotate) : les propriétés ne se chevauchent pas, et `rotate`
+   s'ajoute à l'inclinaison déjà donnée par `transform`. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    scale: 0.9;
+  }
+}
+
+@keyframes grow {
+  from {
+    scale: 0.4;
+  }
+}
+
+@keyframes textAway {
+  to {
+    opacity: 0;
+    translate: 0 90px;
+  }
+}
+
+@keyframes sunAway {
+  to {
+    translate: 0 140px;
+  }
+}
+
+@keyframes filmAdvance {
+  to {
+    background-position-x: -336px;
+  }
+}
+
+@keyframes cameraAway {
+  to {
+    translate: 0 -70px;
+    rotate: -4deg;
+  }
+}
+
+@keyframes homeAway {
+  to {
+    translate: 0 -170px;
+    rotate: 4deg;
+  }
+}
+
+@keyframes toastAway {
+  to {
+    translate: 0 -230px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .text > * {
+    animation: rise 800ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .text > :nth-child(2) {
+    animation-delay: 90ms;
+  }
+  .text > :nth-child(3) {
+    animation-delay: 180ms;
+  }
+  .text > :nth-child(4) {
+    animation-delay: 270ms;
+  }
+
+  .sun {
+    animation: grow 1100ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  .cameraPhone,
+  .homePhoneLg,
+  .homePhoneMd {
+    animation: pop 900ms 200ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .homePhoneLg {
+    animation-delay: 340ms;
+  }
+
+  .toast {
+    animation: pop 600ms 1000ms cubic-bezier(0.3, 1.4, 0.5, 1) both;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .text,
+    .sun,
+    .film,
+    .cameraPhone,
+    .homePhoneLg,
+    .homePhoneMd,
+    .toast {
+      animation-timeline: scroll(root);
+      animation-range: 0 100vh;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+    }
+
+    .text {
+      animation-name: textAway;
+    }
+    .sun {
+      animation-name: grow, sunAway;
+      animation-duration: 1100ms, auto;
+      animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1), linear;
+      animation-timeline: auto, scroll(root);
+      animation-range: normal, 0 100vh;
+    }
+    .film {
+      animation-name: filmAdvance;
+    }
+    .cameraPhone,
+    .homePhoneLg,
+    .homePhoneMd {
+      animation-name: pop, cameraAway;
+      animation-duration: 900ms, auto;
+      animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1), linear;
+      animation-timeline: auto, scroll(root);
+      animation-range: normal, 0 100vh;
+    }
+    .homePhoneLg,
+    .homePhoneMd {
+      animation-name: pop, homeAway;
+    }
+    .toast {
+      animation-name: pop, toastAway;
+      animation-duration: 600ms, auto;
+      animation-timing-function: cubic-bezier(0.3, 1.4, 0.5, 1), linear;
+      animation-timeline: auto, scroll(root);
+      animation-range: normal, 0 100vh;
+    }
   }
 }

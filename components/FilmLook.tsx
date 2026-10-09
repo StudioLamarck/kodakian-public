@@ -38,7 +38,7 @@ export default function FilmLook() {
 
   return (
     <section className={styles.section}>
-      <div className={styles.head}>
+      <div className={`reveal ${styles.head}`}>
         <span className="eyebrow">Ta pellicule, tes règles</span>
         <h2 className="h2">Un vrai rendu de pellicule.</h2>
         <p className="lead">
@@ -47,7 +47,7 @@ export default function FilmLook() {
         </p>
       </div>
 
-      <div role="img" aria-label={label} className={styles.previewWrap}>
+      <div role="img" aria-label={label} className={`reveal-scale ${styles.previewWrap}`}>
         <Scene palette={palettes.dusk} className={styles.preview}>
           {effect && (
             <>
@@ -67,7 +67,7 @@ export default function FilmLook() {
         </Scene>
       </div>
 
-      <div className={styles.controls}>
+      <div className={`reveal ${styles.controls}`}>
         <div className={styles.films}>
           <span id="film-label" className={styles.filmsLabel}>
             Nombre de poses par invité

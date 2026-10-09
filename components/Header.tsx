@@ -5,6 +5,7 @@ import styles from "./Header.module.css";
 export default function Header() {
   return (
     <header className={styles.header}>
+      <span aria-hidden="true" className={styles.progress} />
       <a href="#" aria-label="Kodakian, accueil" className={styles.brand}>
         <AppIcon size={40} className={styles.icon} />
         <span className={styles.name}>Kodakian</span>
