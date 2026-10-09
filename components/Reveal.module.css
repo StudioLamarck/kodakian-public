@@ -1,0 +1,248 @@
+.section {
+  max-width: 1360px;
+  margin: 0 12px;
+  border-radius: 32px;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 44px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 6px;
+}
+
+.eyebrow {
+  color: var(--peach);
+}
+
+.title {
+  color: var(--cream);
+}
+
+.lead {
+  color: var(--sub-dark);
+  max-width: 520px;
+}
+
+.points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.points li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+}
+
+.check {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: var(--orange);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* ---------- Panneau compte à rebours ---------- */
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--ink-2);
+  border-radius: 26px;
+  padding: 20px 16px;
+}
+
+.panelHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panelLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-dark);
+}
+
+.status {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--peach);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--orange);
+}
+
+.timer {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.digits {
+  width: 86px;
+  height: 76px;
+  border-radius: 16px;
+  background: var(--black);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 40px;
+  color: var(--peach);
+  font-variant-numeric: tabular-nums;
+}
+
+.unitLabel {
+  font-size: 13px;
+  color: var(--muted-dark);
+}
+
+.date {
+  font-size: 14px;
+  color: var(--sub-dark);
+  text-align: center;
+}
+
+.negatives {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.negatives span {
+  height: 52px;
+  border-radius: 8px;
+  background: #2b2723;
+  box-shadow: inset 0 0 0 4px var(--ink-3);
+  display: flex;
+  align-items: flex-end;
+  padding: 7px 9px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #8c8274;
+}
+
+.lock {
+  display: none;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: var(--ink);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--sub-dark);
+}
+
+.lock svg {
+  flex-shrink: 0;
+}
+
+@media (min-width: 720px) {
+  .section {
+    margin: 0 40px;
+    border-radius: 44px;
+    padding: 80px var(--gutter);
+    gap: 56px;
+  }
+  .copy {
+    gap: 24px;
+    padding: 0;
+  }
+  .points {
+    gap: 14px;
+  }
+  .points li {
+    font-size: 17px;
+  }
+  .check {
+    width: 28px;
+    height: 28px;
+  }
+  .check svg {
+    width: 14px;
+    height: 14px;
+  }
+  .panel {
+    max-width: 520px;
+    gap: 20px;
+    border-radius: 32px;
+    padding: 30px;
+  }
+  .panelLabel {
+    font-size: 12px;
+  }
+  .status,
+  .lock {
+    display: flex;
+  }
+  .digits {
+    width: 110px;
+    height: 96px;
+    font-size: 54px;
+  }
+  .date {
+    font-size: 15px;
+  }
+  .negatives span {
+    height: 64px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .section {
+    padding: 100px 80px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 520px;
+    gap: 80px;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1440px) {
+  .section {
+    margin: 0 auto;
+  }
+}

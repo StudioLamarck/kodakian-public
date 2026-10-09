@@ -1,0 +1,245 @@
+.section {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.head,
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ---------- Aperçu ---------- */
+.preview {
+  height: 230px;
+  border-radius: 24px;
+}
+
+.preview > .tint {
+  inset: 0;
+  background: rgba(255, 140, 50, 0.2);
+  mix-blend-mode: multiply;
+}
+
+.preview > .grain {
+  inset: 0;
+  opacity: 0.7;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1.2px),
+    radial-gradient(rgba(0, 0, 0, 0.18) 1px, transparent 1.2px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1px 2px;
+}
+
+.preview > .vignette {
+  inset: 0;
+  box-shadow: inset 0 0 90px 18px rgba(30, 15, 5, 0.55);
+}
+
+.preview > .stamp {
+  right: 18px;
+  bottom: 14px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  color: #ff8a1f;
+  text-shadow: 0 0 6px rgba(255, 120, 20, 0.8);
+}
+
+.preview > .tag {
+  left: 14px;
+  top: 14px;
+  height: 26px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(29, 26, 22, 0.6);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ---------- Nombre de poses ---------- */
+.films {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filmsLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.filmGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.film {
+  height: 64px;
+  border: none;
+  border-radius: 18px;
+  background: var(--card);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  box-shadow: var(--shadow-soft);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.film:hover {
+  background: #fff;
+}
+
+.filmN {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.filmUnit {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.film.filmOn {
+  background: var(--ink);
+  color: var(--cream);
+  box-shadow: none;
+}
+
+.filmOn .filmUnit {
+  color: var(--peach);
+}
+
+/* ---------- Réglages ---------- */
+.settings {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border-radius: 22px;
+  padding: 2px 18px;
+  box-shadow: var(--shadow-soft);
+}
+
+.setting {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 76px;
+}
+
+.settingText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-grow: 1;
+}
+
+.settingLabel {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.settingHint {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.divider {
+  height: 1px;
+  background: var(--sand);
+}
+
+.switch {
+  width: 52px;
+  height: 32px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 999px;
+  background: var(--switch-off);
+  padding: 3px;
+  display: flex;
+}
+
+.switch > span {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: transform 0.18s ease;
+}
+
+.switchOn {
+  background: var(--orange);
+}
+
+.switchOn > span {
+  transform: translateX(20px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switch > span,
+  .film {
+    transition: none;
+  }
+}
+
+@media (min-width: 720px) {
+  .section {
+    padding: 100px var(--gutter) 60px;
+    gap: 24px;
+  }
+  .head,
+  .controls {
+    gap: 24px;
+  }
+  .preview {
+    height: 360px;
+    border-radius: 32px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .section {
+    display: grid;
+    grid-template-columns: 600px minmax(0, 1fr);
+    grid-template-areas:
+      "preview head"
+      "preview controls";
+    align-content: center;
+    column-gap: 80px;
+    row-gap: 24px;
+    padding: 100px var(--gutter) 80px;
+  }
+  .head {
+    grid-area: head;
+    align-self: end;
+  }
+  .controls {
+    grid-area: controls;
+  }
+  .previewWrap {
+    grid-area: preview;
+    align-self: center;
+  }
+  .preview {
+    height: 440px;
+  }
+}

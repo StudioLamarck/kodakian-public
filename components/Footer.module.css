@@ -1,0 +1,102 @@
+.footer {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 40px 20px 48px;
+  display: grid;
+  grid-template-areas:
+    "brand"
+    "legal"
+    "copyright"
+    "credit";
+  gap: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.brand {
+  grid-area: brand;
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: -0.03em;
+}
+
+.legal {
+  grid-area: legal;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.legal a:hover {
+  color: var(--orange-dark);
+}
+
+.copyright {
+  grid-area: copyright;
+}
+
+.credit {
+  grid-area: credit;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.studio {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+a.studio:hover {
+  color: var(--orange-dark);
+}
+
+@media (min-width: 900px) {
+  .footer {
+    padding: 48px var(--gutter);
+    min-height: 168px;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand legal"
+      "copyright credit";
+    align-content: center;
+    gap: 10px 40px;
+  }
+  .icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+  .name {
+    font-size: 20px;
+  }
+  .legal {
+    justify-self: end;
+    gap: 24px;
+  }
+  .credit {
+    justify-self: end;
+  }
+}

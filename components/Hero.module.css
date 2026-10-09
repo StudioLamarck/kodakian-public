@@ -1,0 +1,207 @@
+.section {
+  overflow: hidden;
+}
+
+.inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Texte ---------- */
+.text {
+  padding: 16px 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.badge {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: var(--card);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  box-shadow: var(--shadow-soft);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--orange);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(42px, 4.31vw, 62px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.accent {
+  color: var(--orange);
+}
+
+.intro {
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--text-2);
+  max-width: 500px;
+}
+
+/* ---------- Visuel : mobile (une seule pellicule) ---------- */
+.stage {
+  position: relative;
+  width: 390px;
+  height: 580px;
+  margin: 32px auto 0;
+  flex-shrink: 0;
+}
+
+.sun {
+  position: absolute;
+  left: 35px;
+  top: 70px;
+  width: 320px;
+  height: 320px;
+  border-radius: 999px;
+  background: var(--orange);
+}
+
+/* Bande de pellicule : pivotée depuis son extrémité gauche pour pouvoir
+   s'étendre jusqu'au bord de l'écran sans se décaler. */
+.film {
+  position: absolute;
+  left: -18px;
+  top: 280px;
+  width: 3000px;
+  height: 24px;
+  background: repeating-linear-gradient(90deg, var(--ink) 0 12px, transparent 12px 24px);
+  opacity: 0.9;
+  transform: rotate(-8deg);
+  transform-origin: 0 50%;
+}
+
+.cameraPhone,
+.homePhoneLg {
+  display: none;
+}
+
+.homePhoneMd {
+  left: 72px;
+  top: 30px;
+  transform: rotate(4deg);
+}
+
+.toast {
+  position: absolute;
+  left: 16px;
+  top: 470px;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--card);
+  border-radius: 999px;
+  padding: 10px 16px;
+  box-shadow: 0 16px 30px -12px rgba(29, 26, 22, 0.45);
+  white-space: nowrap;
+}
+
+/* ---------- Visuel : tablette et ordinateur (deux téléphones) ---------- */
+@media (min-width: 720px) {
+  .text {
+    padding: 40px var(--gutter) 0;
+    gap: 28px;
+    max-width: 680px;
+  }
+
+  .badge {
+    height: 34px;
+    padding: 0 14px;
+    font-size: 12px;
+  }
+
+  .intro {
+    line-height: 1.55;
+  }
+
+  .stage {
+    width: 620px;
+    height: 760px;
+    margin-top: 0;
+  }
+
+  .sun {
+    left: 70px;
+    top: 120px;
+    width: 540px;
+    height: 540px;
+  }
+
+  .film {
+    left: 3px;
+    top: 377px;
+    height: 34px;
+    background: repeating-linear-gradient(90deg, var(--ink) 0 14px, transparent 14px 28px);
+  }
+
+  .cameraPhone,
+  .homePhoneLg {
+    display: block;
+  }
+
+  .homePhoneMd {
+    display: none;
+  }
+
+  .cameraPhone {
+    left: 30px;
+    top: 92px;
+    transform: rotate(-7deg);
+  }
+
+  .homePhoneLg {
+    left: 300px;
+    top: 56px;
+    transform: rotate(5deg);
+  }
+
+  .toast {
+    left: -10px;
+    top: 610px;
+    font-size: 15px;
+    padding: 12px 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .inner {
+    height: 760px;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: 600px minmax(0, 1fr);
+    gap: 40px;
+    align-items: center;
+  }
+
+  .text {
+    padding: 0;
+    max-width: none;
+    min-height: 534px;
+  }
+
+  .stage {
+    width: auto;
+    margin: 0;
+  }
+}

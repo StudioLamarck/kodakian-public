@@ -1,0 +1,51 @@
+.scene {
+  position: relative;
+  overflow: hidden;
+}
+
+.scene > span {
+  position: absolute;
+}
+
+.person1 {
+  left: 12%;
+  bottom: 16%;
+  width: 20%;
+  height: 50%;
+  border-radius: 999px 999px 8px 8px;
+}
+
+.person2 {
+  left: 34%;
+  bottom: 16%;
+  width: 17%;
+  height: 43%;
+  border-radius: 999px 999px 8px 8px;
+}
+
+.table {
+  right: 10%;
+  bottom: 16%;
+  width: 27%;
+  height: 24%;
+  border-radius: 8px;
+}
+
+.candle {
+  right: 22%;
+  bottom: 40%;
+  width: 2.2%;
+  height: 12%;
+  border-radius: 3px;
+  background: var(--paper);
+}
+
+.flame {
+  right: 21.4%;
+  bottom: 52%;
+  width: 3.4%;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: #ffc66b;
+  box-shadow: 0 0 16px 6px rgba(255, 198, 107, 0.6);
+}

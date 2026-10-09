@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kodakian — site vitrine
 
-## Getting Started
+Site public de Kodakian, construit avec Next.js 16 (App Router). La page est entièrement statique ;
+seuls le compte à rebours, l'aperçu « rendu pellicule » et la FAQ s'exécutent côté navigateur.
 
-First, run the development server:
+## Développement
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Le site tourne sur http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contenu à compléter
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Tout se règle dans [`lib/site.ts`](lib/site.ts) :
 
-## Learn More
+- `stores.appStore` / `stores.googlePlay` : tant qu'ils valent `null`, les badges affichent
+  « Bientôt sur… » et le site annonce une sortie prochaine. Dès qu'une URL est renseignée,
+  les textes repassent en « Télécharger ».
+- `links.terms`, `links.privacy`, `links.contact`, `links.studio` : liens du pied de page et
+  « Écris-nous » de la FAQ, affichés sans lien tant qu'ils valent `null`.
 
-To learn more about Next.js, take a look at the following resources:
+## Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `app/` : mise en page, page d'accueil, icônes et image Open Graph générées au build.
+- `components/` : une section par fichier (`Hero`, `Stats`, `Steps`, `Reveal`, `FilmLook`,
+  `Occasions`, `Faq`, `Download`, `Footer`), chacune avec son module CSS.
+- Les couleurs et polices sont définies dans `app/globals.css`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Déploiement sur Vercel
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Pousser le dépôt sur GitHub, GitLab ou Bitbucket.
+2. Sur Vercel, « Add New… › Project », importer le dépôt : le framework Next.js est détecté,
+   aucune configuration n'est nécessaire.
+3. Optionnel : définir `NEXT_PUBLIC_SITE_URL` (ex. `https://kodakian.fr`) pour les balises
+   Open Graph. Sinon, le domaine de production Vercel est utilisé.

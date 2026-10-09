@@ -1,0 +1,49 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.badge {
+  height: 58px;
+  padding: 0 22px;
+  border-radius: 16px;
+  background: var(--ink);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.link:hover {
+  background: #000;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  text-align: left;
+}
+
+.prefix {
+  font-size: 11px;
+  line-height: 1.1;
+  color: var(--muted-dark);
+}
+
+.name {
+  font-size: 17px;
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+@media (min-width: 720px) {
+  .row {
+    flex-direction: row;
+  }
+  .badge {
+    justify-content: flex-start;
+  }
+}
